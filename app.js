@@ -3,6 +3,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
 const songs = require('./public/js/songs-data'); // Импорт песен
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
