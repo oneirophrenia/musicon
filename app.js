@@ -3,7 +3,6 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const path = require('path');
 const songs = require('./public/js/songs-data'); // Импорт песен
-const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -20,25 +19,22 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Маршруты
+
 // Главная страница с песнями
 app.get('/', (req, res) => {
-    res.render('index', { 
+    res.render('index', {
         user: req.session.user,
         songs: songs // Передаем песни в шаблон
     });
 });
 
-// Маршруты
-app.get('/', (req, res) => {
-    res.render('index', { user: req.session.user });
-});
-
 app.get('/library', (req, res) => {
-  res.render('library', { 
-    user: req.session.user,
-    songs: songs // Передаем список песен в шаблон
-  });
-});;
+    res.render('library', {
+        user: req.session.user,
+        songs: songs // Передаем список песен в шаблон
+    });
+});
 
 app.get('/about', (req, res) => {
     res.render('about', { user: req.session.user });
@@ -75,5 +71,5 @@ app.get('/logout', (req, res) => {
 // Запуск сервера
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(Server is running on http://localhost:${PORT});
 });
