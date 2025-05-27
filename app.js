@@ -5,7 +5,7 @@ const path = require('path');
 const songs = require('./public/js/songs-data'); // Импорт песен
 
 const app = express();
-
+const PORT = process.env.PORT || 3000; // Используем переменную окружения PORT, или 3000, если она не задана
 // Настройки
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -69,7 +69,7 @@ app.get('/logout', (req, res) => {
 });
 
 // Запуск сервера
-const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
-    console.log(Server is running on http://localhost:${PORT});
+  console.log(Server is running on http://localhost:${PORT});
 });
