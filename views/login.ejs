@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musicon - Music On The Go</title>
+    <link href="/css/Navbar.css" rel="stylesheet" />
+    <link href="/css/Login.css" rel="stylesheet" />
+  </head>
+  <body>
+    <%- include('partials/navbar', { user }) %>
+    
+    <div class="login-container">
+      <div class="main">
+        <label class="brand"><img src="/Resources/pl.png" />Musicon</label>
+        <input type="checkbox" id="chk" aria-hidden="true" />
+        
+        <div class="singup">
+          <form action="/register" method="POST">
+            <label for="chk" aria-hidden="true">Зарегистрироваться</label>
+            <input type="text" name="txt" placeholder="Имя пользователя" required />
+            <input type="email" name="email" placeholder="Почта" required />
+            <input type="password" name="pswd" placeholder="Пароль" required />
+            <button type="submit" class="button">Зарегистрироваться</button>
+          </form>
+        </div>
+
+        <div class="login">
+          <form action="/login" method="POST">
+            <label for="chk" aria-hidden="true">Войти</label>
+            <input type="email" name="email" placeholder="Почта" required />
+            <input type="password" name="pswd" placeholder="Пароль" required />
+            <button type="submit" class="button">Войти</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://kit.fontawesome.com/d5b2540b36.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

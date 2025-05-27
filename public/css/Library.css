@@ -1,0 +1,642 @@
+.contain{
+    height: 82vh;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.lib-container{
+    margin-bottom: 3rem;
+}
+
+.lib-container h1{
+    color: #6d44b8;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.songlist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.songitem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  border-radius: 10px;
+  background: rgba(9, 67, 32, 0.3);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.songitem:hover {
+  background-color: rgba(164, 168, 180, 0.2);
+  transform: scale(1.03);
+}
+
+.songitem img {
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.songName {
+  padding: 0.8rem;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.songlistplay {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.songitem:hover .songlistplay {
+  opacity: 1;
+}
+
+.songlistplay i {
+  font-size: 2.5rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.bottom {
+  position: fixed;
+  bottom: 0;
+  background-color: var(--bg-primary);
+  z-index: 2;
+  height: 10vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+/* Остальные стили 
+
+.bottom .songinfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid #fff; */
+  width: 20%;
+}
+
+.bottom .songinfo #masterSongName {
+  font-size: 13px;
+  margin-left: 10px;
+  color: #fff;
+  line-height: 15px;
+}
+
+.bottom .songinfo h5 {
+  font-size: 13px;
+  margin-left: 15px;
+  color: #fff;
+  line-height: 15px;
+}
+
+.bottom .songinfo img {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 0 0 10px 10px;
+}
+
+.bottom .icons {
+  /* border: 1px solid #fff; */
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.bottom .icons .fas {
+  cursor: pointer;
+}
+
+.bottom .icons img:hover {
+  filter: drop-shadow(0 0 0.75rem #aa10d8);
+}
+
+.bottom .progress {
+  display: flex;
+}
+
+.bottom .progress #currentStart {
+  margin: 0 0 0 20px;
+}
+
+.bottom .time {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  /* border: 1px solid #fff; */
+}
+
+.bottom .bar {
+  position: relative;
+  width: 800%;
+  height: 2px;
+  background: rgb(105, 105, 170, 0.1);
+  margin: 0 15px 0 10px;
+}
+
+.bottom .bar .bar2 {
+  position: absolute;
+  background: #36e2ec;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  transition: 0.3s linear;
+}
+
+.bottom .bar .dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #36e2ec;
+  border-radius: 50%;
+  left: 0%;
+  top: -1px;
+  transition: 0.3s linear;
+}
+
+.bottom .bar .dot::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #36e2ec;
+  border-radius: 50%;
+  left: -6px;
+  top: -6px;
+  box-shadow: inset 0 0 3px #36e2ec;
+}
+
+.bottom .bar input {
+  position: absolute;
+  width: 100%;
+  top: -6px;
+  left: 0;
+  cursor: pointer;
+  z-index: 999999;
+  opacity: 0;
+}
+
+.bottom .vol {
+  display: flex;
+  position: relative;
+  width: 200px;
+  height: 2px;
+  margin-left: 50px;
+  background-color: rgb(105, 105, 170, 0.1);
+}
+
+.bottom .vol .bi {
+  position: absolute;
+  color: #fff;
+  font-size: 25px;
+  top: -17px;
+  left: -30px;
+}
+
+.bottom .vol input {
+  position: absolute;
+  width: 100%;
+  top: -6px;
+  left: 0;
+  cursor: pointer;
+  z-index: 999999;
+  opacity: 0;
+}
+
+.bottom .vol .vol_bar {
+  position: absolute;
+  background: #36e2ec;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  transition: 0.3s linear;
+}
+
+.bottom .vol .dot {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #36e2ec;
+  border-radius: 50%;
+  left: 100%;
+  top: -1px;
+  transition: 0.3s linear;
+}
+
+.bottom .vol .dot::before {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #36e2ec;
+  border-radius: 50%;
+  left: -6px;
+  top: -6px;
+  box-shadow: inset 0 0 3px #36e2ec;
+}
+
+.songinfo {
+  /* position: absolute; */
+  padding-bottom: 1rem;
+}
+
+.songinfo .masterSongName {
+  font-size: 20px;
+  margin-left: 15px;
+  color: #fff;
+  line-height: 15px;
+}
+
+.songinfo img {
+  opacity: 0;
+  transition: 1s ease-in;
+}
+/* Progress bar styles */
+.progress-container {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  margin: 0 20px;
+}
+
+.progress-bar {
+  flex-grow: 1;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  margin: 0 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.progress {
+  height: 100%;
+  background: #6d44b8;
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.progress-dot {
+  position: absolute;
+  left: 0%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background: #6d44b8;
+  border-radius: 50%;
+  transition: left 0.1s linear;
+}
+
+#currentTime, #duration {
+  font-size: 12px;
+  color: #b6b6b6;
+  min-width: 40px;
+  text-align: center;
+}
+/* Основные стили для нижней панели */
+.bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #23232e;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.player-controls i {
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.player-controls i:hover {
+  color: #6d44b8;
+}
+
+/* Стили для ползунка громкости */
+.volume-container {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+#volumeIcon {
+  margin-right: 10px;
+  font-size: 18px;
+  color: #b6b6b6;
+  cursor: pointer;
+}
+
+.volume-bar {
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+
+.volume-progress {
+  height: 100%;
+  background: #6d44b8;
+  border-radius: 2px;
+  width: 80%; /* Начальная громкость 80% */
+}
+
+.volume-dot {
+  position: absolute;
+  left: 80%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #6d44b8;
+  border-radius: 50%;
+  transition: left 0.1s linear;
+  opacity: 0;
+}
+
+.volume-bar:hover .volume-dot {
+  opacity: 1;
+}
+
+
+/* Стили для кнопок сохранения */
+/* Стили для кнопок сохранения */
+.save-btn {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #b6b6b6;
+  transition: all 0.2s ease;
+}
+
+.save-btn.saved {
+  color: #6d44b8;
+}
+
+.save-btn:hover {
+  transform: scale(1.1);
+}
+
+.remove-bookmark {
+  color: #6d44b8;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: all 0.2s ease;
+}
+
+.remove-bookmark:hover {
+  color: #ff0000;
+  transform: scale(1.2);
+}
+
+.no-songs {
+  color: #b6b6b6;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+.play-from-bookmark {
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+.play-from-bookmark:hover {
+  color: #6d44b8;
+  transform: scale(1.1);
+}
+
+.remove-bookmark {
+  color: #6d44b8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.remove-bookmark:hover {
+  color: #ff0000;
+  transform: scale(1.1);
+}
+/* Плеер для закладок */
+.bookmark-player {
+    position: fixed;
+    bottom: 0;
+    left: 5rem;
+    right: 0;
+    background: #23232e;
+    padding: 15px;
+    z-index: 100;
+}
+
+.bookmark-progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.bookmark-player .progress {
+    height: 100%;
+    background: #6d44b8;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .bookmark-player {
+        left: 0;
+    }
+}/* Плеер для закладок */
+.bookmark-player {
+    position: fixed;
+    bottom: 0;
+    left: 5rem;
+    right: 0;
+    background: #23232e;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    height: 80px;
+}
+
+.bookmark-player .controls {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.bookmark-player .player-controls {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.bookmark-player .player-controls i {
+    margin: 0 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.bookmark-player .player-controls i:hover {
+    color: #6d44b8;
+    transform: scale(1.1);
+}
+
+.bookmark-progress-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin: 0 20px;
+}
+
+.bookmark-progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.bookmark-progress-bar .progress {
+    height: 100%;
+    background: #6d44b8;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.bookmark-progress-bar .progress-dot {
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: #6d44b8;
+    border-radius: 50%;
+    transition: left 0.1s linear;
+    opacity: 0;
+}
+
+.bookmark-progress-bar:hover .progress-dot {
+    opacity: 1;
+}
+
+.bookmark-volume-container {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.bookmark-volume-bar {
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    position: relative;
+    cursor: pointer;
+}
+
+.bookmark-volume-bar .volume-progress {
+    height: 100%;
+    background: #6d44b8;
+    border-radius: 2px;
+    width: 80%;
+}
+
+.bookmark-volume-bar .volume-dot {
+    position: absolute;
+    left: 80%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #6d44b8;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.bookmark-volume-bar:hover .volume-dot {
+    opacity: 1;
+}
+
+#bookmarkCurrentTime, #bookmarkDuration {
+    font-size: 12px;
+    color: #b6b6b6;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .bookmark-player {
+        left: 0;
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+    
+    .bookmark-player .controls {
+        flex-direction: column;
+    }
+    
+    .bookmark-progress-container {
+        width: 100%;
+        margin: 10px 0;
+    }
+    
+    .bookmark-volume-container {
+        margin: 10px 0 0 0;
+        width: 100%;
+    }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/head') %>
+    <link href="/css/Home.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar', { user }) %>
+    
+    <main>
+      <div class="header">
+        <h1 class="left">Специально для вас!</h1>
+        <div class="right">
+          <div class="container margin">
+            <div class="songlist">
+              <% songs.forEach((song, index) => { %>
+                <div class="songitem">
+                  <img src="<%= song.coverPath %>" alt="<%= song.songName %>" />
+                  <span class="songName"><%= song.songName %></span>
+                  <span class="songlistplay">
+                  <i id="<%= index %>" class="far songItemPlay fa-play-circle"></i>
+                  <i class="fas fa-bookmark save-btn" data-song-id="<%= song.filePath %>"></i>
+                  </span>
+                 </div>
+              <% }); %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="bottom">
+      <div class="songinfo">
+        <img src="/Resources/playing.gif" width="45px" alt="" id="gif" />
+        <span id="masterSongName">Выберите песню</span>
+      </div>
+      <div class="controls">
+        <div class="player-controls">
+          <i class="fas fa-2x fa-step-backward" id="previous"></i>
+          <i class="fas fa-2x fa-play-circle" id="masterPlay"></i>
+          <i class="fas fa-2x fa-step-forward" id="next"></i>
+        </div>
+        
+        <div class="progress-container">
+          <span id="currentTime">0:00</span>
+          <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+            <div class="progress-dot" id="progressDot"></div>
+          </div>
+          <span id="duration">0:00</span>
+        </div>
+        
+        <div class="volume-container">
+          <i class="fas fa-volume-up" id="volumeIcon"></i>
+          <div class="volume-bar">
+            <div class="volume-progress" id="volumeProgress"></div>
+            <div class="volume-dot" id="volumeDot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/player.js"></script>
+    <script src="/js/saveSongs.js"></script>
+    <script src="https://kit.fontawesome.com/d5b2540b36.js" crossorigin="anonymous"></script>
+  </body>
+</html>

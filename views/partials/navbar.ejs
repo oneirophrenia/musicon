@@ -1,0 +1,49 @@
+<nav class="navbar">
+  <ul class="navbar-nav">
+    <li class="logo">
+      <a class="nav-link" href="">
+        <img src="/Resources/pl.png" />
+        <span class="link-text">Musicon</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/">
+        <img src="/icons/home.svg" alt="Домой" />
+        <span class="link-text">Домой</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/about">
+        <img src="/icons/about.svg" alt="О нас" />
+        <span class="link-text">О нас</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/library">
+        <img src="/icons/library.svg" alt="Закладки" />
+        <span class="link-text">Закладки</span>
+      </a>
+    </li>
+    <% if (user) { %>
+      <li class="nav-item user-info">
+        <div class="nav-link">
+          <img src="/icons/user.svg" alt="Пользователь" />
+          <span class="link-text"><%= user.name %></span>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">
+          <img src="/icons/logout.svg" alt="Выйти" />
+          <span class="link-text">Выйти</span>
+        </a>
+      </li>
+    <% } else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">
+          <img src="/icons/login.svg" alt="Войти" />
+          <span class="link-text">Войти</span>
+        </a>
+      </li>
+    <% } %>
+  </ul>
+</nav>

@@ -1,0 +1,5 @@
+﻿1)cd C:\Users\OWL\Desktop\преддипломная практика лисичкина\musicon-node (выбор папки)
+2)npm install express ejs body-parser express-session (зависимости)
+3)node app.js (запуск сервера)
+
+http://localhost:3000

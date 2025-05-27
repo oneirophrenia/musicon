@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <link href="/css/Library.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+    <%- include('partials/navbar', { user }) %>
+    
+    <main>
+        <div class="contain">
+            <div class="lib-container">
+                <h1>Мои закладки</h1>
+                <div class="songlist" id="savedSongsList">
+                    <!-- Сохраненные песни будут здесь -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Плеер для закладок -->
+        <div class="bottom bookmark-player">
+    <div class="songinfo">
+        <img src="/Resources/playing.gif" width="45px" alt="" id="bookmarkGif" />
+        <span id="bookmarkMasterSongName">Выберите песню</span>
+    </div>
+    <div class="controls">
+        <div class="player-controls">
+            <i class="fas fa-2x fa-step-backward" id="bookmarkPrevious"></i>
+            <i class="fas fa-2x fa-play-circle" id="bookmarkMasterPlay"></i>
+            <i class="fas fa-2x fa-step-forward" id="bookmarkNext"></i>
+        </div>
+        
+        <div class="bookmark-progress-container">
+            <span id="bookmarkCurrentTime">0:00</span>
+            <div class="bookmark-progress-bar">
+                <div class="progress" id="bookmarkProgress"></div>
+                <div class="progress-dot" id="bookmarkProgressDot"></div>
+            </div>
+            <span id="bookmarkDuration">0:00</span>
+        </div>
+        
+        <div class="bookmark-volume-container">
+            <i class="fas fa-volume-up" id="bookmarkVolumeIcon"></i>
+            <div class="bookmark-volume-bar">
+                <div class="volume-progress" id="bookmarkVolumeProgress"></div>
+                <div class="volume-dot" id="bookmarkVolumeDot"></div>
+            </div>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <script>
+        window.songs = <%- JSON.stringify(songs) %>;
+    </script>
+    <script src="/js/saveSongs.js"></script>
+    <script src="/js/bookmarkPlayer.js"></script>
+</body>
+</html>

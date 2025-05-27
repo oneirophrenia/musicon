@@ -1,0 +1,10 @@
+git config --global user.email "gentlymaestro0@gmail.com"  ---твой имейл
+git config --global user.name "oneirophrenia"   ---- твоё имя гитхаба
+cd (ссылка на проектна твоем пк) 
+rmdir /s /q .git   
+git init  -- выбераешь файлы
+git commit -m "Первая версия сайта"  -- комишь файлы как онпи будут назывыться
+git remote add origin https://github.com/oneirophrenia/musicon.git --- отправляшь версию на гит
+git branch -M main   ---моздание ветки мейн
+git push -u origin main  -- отпрака на ветку
+git push -f origin main   -- если не пришло на мейн то вводи это
